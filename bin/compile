@@ -2,7 +2,7 @@
 
 set -e
 
-export BUILD_DIR=$1
+BUILD_DIR=$1
 BIN_DIR=$(cd $(dirname $0); pwd)
 
 source "$BIN_DIR/support/functions"
@@ -12,14 +12,13 @@ cd "$BUILD_DIR"
 DATABASE_NAME=heroku_review_${SOURCE_VERSION}
 DATABASE_URL=$(cat $ENV_DIR/BASE_DATABASE_URL | sed -e s/__DATABASE_NAME__/$DATABASE_NAME/)
 
+echo "Create: tmp/buildpack-review-apps-aws-rds-release-step.yml" | arrow
 cat <<EOF >"$BUILD_DIR/tmp/buildpack-review-apps-aws-rds-release-step.yml"
 ---
 config_vars:
   DATABASE_NAME: $DATABASE_NAME
   DATABASE_URL: $DATABASE_URL
 EOF
-
-echo "Create: tmp/buildpack-review-apps-aws-rds-release-step.yml" | arrow
 cat $BUILD_DIR/tmp/buildpack-review-apps-aws-rds-release-step.yml | indent
 
 echo "Copy: 'config/database.reviewapps.yml' -> 'config/database.yml'" | arrow
