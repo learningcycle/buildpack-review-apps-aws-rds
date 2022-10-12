@@ -3,6 +3,7 @@
 set -e
 
 BUILD_DIR=$1
+ENV_DIR=$3
 BIN_DIR=$(cd $(dirname $0); pwd)
 
 source "$BIN_DIR/support/functions"
@@ -10,7 +11,7 @@ source "$BIN_DIR/support/functions"
 cd "$BUILD_DIR"
 
 DATABASE_NAME=heroku_review_${SOURCE_VERSION}
-DATABASE_URL=$(cat $ENV_DIR/BASE_DATABASE_URL | sed -e s/__DATABASE_NAME__/$DATABASE_NAME/)
+DATABASE_URL=$(cat $ENV_DIR/DATABASE_URL | sed -e s/__DATABASE_NAME__/$DATABASE_NAME/)
 
 echo "Create: tmp/buildpack-review-apps-aws-rds-release-step.yml" | arrow
 cat <<EOF >"$BUILD_DIR/tmp/buildpack-review-apps-aws-rds-release-step.yml"
