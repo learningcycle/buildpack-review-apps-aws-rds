@@ -2,9 +2,12 @@
 
 set -e
 
+export BUILD_DIR=$1
 BIN_DIR=$(cd $(dirname $0); pwd)
 
 source "$BIN_DIR/support/functions"
+
+cd "$BUILD_DIR"
 
 echo "Copy: 'config/database.reviewapps.yml' -> 'config/database.yml'" | arrow
 cp config/database.reviewapps.yml config/database.yml
