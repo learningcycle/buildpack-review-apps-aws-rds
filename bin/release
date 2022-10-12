@@ -7,15 +7,4 @@ BIN_DIR=$(cd $(dirname $0); pwd)
 
 source "$BIN_DIR/support/functions"
 
-DATABASE_NAME=heroku_review_${SOURCE_VERSION}
-DATABASE_URL=$(cat $ENV_DIR/BASE_DATABASE_URL | sed -e s/__DATABASE_NAME__/$DATABASE_NAME/)
-
-echo "DATABASE_NAME=$DATABASE_NAME" | arrow
-echo "DATABASE_URL=$DATABASE_URL" | arrow
-
-cat <<EOF
----
-config_vars:
-  DATABASE_NAME: $DATABASE_NAME
-  DATABASE_URL: $DATABASE_URL
-EOF
+cat $BUILD_DIR/tmp/buildpack-review-apps-aws-rds-release-step.yml
