@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+BIN_DIR=$(cd $(dirname $0); pwd)
+
+source "$BIN_DIR/support/functions"
+
+echo "Copy: 'config/database.reviewapps.yml' -> 'config/database.yml'" | arrow
+cp config/database.reviewapps.yml config/database.yml

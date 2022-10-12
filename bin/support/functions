@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+indent()     { sed 's/^/       /'; }
+arrow()      { sed 's/^/-----> /'; }
+indent-err() { sed "s/^/$(printf '\033')[31m       /;s/$/$(printf '\033')[0m/"; }
+arrow-err()  { sed "s/^/$(printf '\033')[31m-----> /;s/$/$(printf '\033')[0m/"; }
