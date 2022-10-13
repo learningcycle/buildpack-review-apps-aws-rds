@@ -30,4 +30,7 @@ echo "ls BUILD_DIR" | arrow
 ls -a $BUILD_DIR $BUILD_DIR/.profile.d $BUILD_DIR/tmp
 echo "ls ENV_DIR" |arrow
 ls -a $ENV_DIR
-echo "RAILS_ENV=${RAILS_ENV}" | arrow
+echo "printenv" | arrow
+printenv
+echo "cat .profile.d"
+cat $BUILD_DIR/.profile.d/*
