@@ -27,7 +27,7 @@ cp -v config/database.reviewapps.yml config/database.yml. | indent
 
 echo "DEBBUG" | arrow
 echo "ls BUILD_DIR" | arrow
-ls $BUILD_DIR
+ls -a $BUILD_DIR
 echo "ls ENV_DIR" |arrow
-ls $ENV_DIR
+ls -a $ENV_DIR
 echo "RAILS_ENV=${RAILS_ENV}" | arrow
